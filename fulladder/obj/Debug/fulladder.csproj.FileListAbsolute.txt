@@ -1,0 +1,10 @@
+c:\users\bram\documents\visual studio 2015\Projects\fulladder\fulladder\bin\Debug\fulladder.exe.config
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\Design-Patterns\fulladder\bin\Debug\fulladder.exe.config
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\fulladder\obj\Debug\fulladder.csprojResolveAssemblyReference.cache
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\fulladder\bin\Debug\fulladder.exe
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\fulladder\bin\Debug\fulladder.pdb
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\fulladder\obj\Debug\fulladder.exe
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\fulladder\obj\Debug\fulladder.pdb
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder_b\fulladder\bin\Debug\fulladder.exe.config
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder_b\fulladder\obj\Debug\fulladder.exe
+C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder_b\fulladder\obj\Debug\fulladder.pdb
