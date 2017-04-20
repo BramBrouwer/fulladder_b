@@ -8,3 +8,6 @@ C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder\fulladder\obj\Debu
 C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder_b\fulladder\bin\Debug\fulladder.exe.config
 C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder_b\fulladder\obj\Debug\fulladder.exe
 C:\Users\bram\Documents\Visual Studio 2015\Projects\fulladder_b\fulladder\obj\Debug\fulladder.pdb
+C:\Users\Kevin\Documents\GitHub\fulladder_b\fulladder\bin\Debug\fulladder.exe.config
+C:\Users\Kevin\Documents\GitHub\fulladder_b\fulladder\obj\Debug\fulladder.exe
+C:\Users\Kevin\Documents\GitHub\fulladder_b\fulladder\obj\Debug\fulladder.pdb
