@@ -6,6 +6,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+//TODO
+//Test checkforloops
+//Add a start/exit exists check 
+//Think of a better way to check for loops
+
 namespace fulladder_bram_kevin
 {
 
@@ -104,13 +109,15 @@ namespace fulladder_bram_kevin
 
             foreach (var i in _edges)
             {
-                //TODO check what this looks like in debugger
                 //Split edge values and them to a dictionary under the edges key
+                //Create a new dictionary
+                //Split the edges definitions/endpoints
+                //Add them to the new dictionary use the edges entry point/identifier as key
                 string[] s = i.Value.Split(','); 
                 d.Add(i.Key, s);
             }
 
-            //Iterate over newly created dictionary and check if a loop exists in each edge 
+            //Iterate over newly created dictionary and check if a loop exists for each edges definitions
             foreach (var i in d)
             {
                 foreach (string s in d[i.Key])
@@ -123,14 +130,16 @@ namespace fulladder_bram_kevin
         }
         /*
         Check if edge creates a loop
+        Current - current identifier / entry point
+        Next - current exit point for the given entry point (we will call this method for each endpoint)
+        d- dictionary of all edge entry points and their separated exit points 
         */
-        private void checkForLoops(string current, string next, Dictionary<string, string[]> d)
+
+        private bool checkForLoops(string current, string next, Dictionary<string, string[]> d)
         {
-            if (!d.ContainsKey(next))
-            {
-                //dealing with a probe which is not present as key in the edges dictionary but this also means this path has an end and doesnt loop forever
-                return;
-            }
+            //If current exit point is not present in the given dictionary we know it doesnt continue anywhere, which also means it cant create a loop
+            if (!d.ContainsKey(next)) { return false; }
+            
 
             foreach (string s in d[next])
             {
@@ -140,13 +149,20 @@ namespace fulladder_bram_kevin
                 {
                     Console.WriteLine("Infinite loop in file");
                     Console.ReadLine();
-                    System.Environment.Exit(0);
+                    return true;
                 }
                 else
                 {
                     checkForLoops(current, s, d);
                 }
             }
+            return false;
+        }
+
+
+        private void checkforloops()
+        {
+
         }
 
     }
