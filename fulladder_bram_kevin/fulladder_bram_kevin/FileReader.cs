@@ -55,8 +55,6 @@ namespace fulladder_bram_kevin
                 _nodes.Clear();    //Empty nodes
                 _edges.Clear();    //Empty edges
                 getNodesAndEdgesFromFile();
-                validateEdges();
-
             }
             catch (Exception e)
             {
@@ -103,67 +101,6 @@ namespace fulladder_bram_kevin
             }
         }
 
-        private void validateEdges()
-        {
-            Dictionary<string, string[]> d = new Dictionary<string, string[]>();
-
-            foreach (var i in _edges)
-            {
-                //Split edge values and them to a dictionary under the edges key
-                //Create a new dictionary
-                //Split the edges definitions/endpoints
-                //Add them to the new dictionary use the edges entry point/identifier as key
-                string[] s = i.Value.Split(','); 
-                d.Add(i.Key, s);
-            }
-
-            //Iterate over newly created dictionary and check if a loop exists for each edges definitions
-            foreach (var i in d)
-            {
-                foreach (string s in d[i.Key])
-                {
-                    counter = 0;
-                    checkForLoops(i.Key, s, d);
-                }
-            }
-
-        }
-        /*
-        Check if edge creates a loop
-        Current - current identifier / entry point
-        Next - current exit point for the given entry point (we will call this method for each endpoint)
-        d- dictionary of all edge entry points and their separated exit points 
-        */
-
-        private bool checkForLoops(string current, string next, Dictionary<string, string[]> d)
-        {
-            //If current exit point is not present in the given dictionary we know it doesnt continue anywhere, which also means it cant create a loop
-            if (!d.ContainsKey(next)) { return false; }
-            
-
-            foreach (string s in d[next])
-            {
-                //when counter is +- 9000 StackOverFlowException will be thrown. This is prevented by ending the loop early and throwing our own exception
-                counter++;
-                if (s.Equals(current) || counter > 5000)
-                {
-                    Console.WriteLine("Infinite loop in file");
-                    Console.ReadLine();
-                    return true;
-                }
-                else
-                {
-                    checkForLoops(current, s, d);
-                }
-            }
-            return false;
-        }
-
-
-        private void checkforloops()
-        {
-
-        }
 
     }
 }
