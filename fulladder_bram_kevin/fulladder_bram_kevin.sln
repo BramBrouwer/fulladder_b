@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fulladder", "fulladder\fulladder.csproj", "{95149BE7-FB45-484B-BBA6-4B7277273325}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fulladder_bram_kevin", "fulladder_bram_kevin\fulladder_bram_kevin.csproj", "{6CB2C2B5-908B-4F49-B65C-764A5E4ACDFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{95149BE7-FB45-484B-BBA6-4B7277273325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95149BE7-FB45-484B-BBA6-4B7277273325}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95149BE7-FB45-484B-BBA6-4B7277273325}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95149BE7-FB45-484B-BBA6-4B7277273325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB2C2B5-908B-4F49-B65C-764A5E4ACDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB2C2B5-908B-4F49-B65C-764A5E4ACDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB2C2B5-908B-4F49-B65C-764A5E4ACDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB2C2B5-908B-4F49-B65C-764A5E4ACDFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
