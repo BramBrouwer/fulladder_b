@@ -23,6 +23,7 @@
                         Grid.Column="3"  Command="{Binding ShowAddNinjaCommand}">
                 </Button>
             </Grid>
+            
             <Grid Background="AntiqueWhite">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200" />
@@ -30,6 +31,29 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="75" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="input" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="0" Grid.Row="0"/>
+                <TextBlock Text="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="1"  Grid.Row="0"/>
+                <TextBlock Text="Logic Board" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="0" Grid.Row="1"/>
+                <TextBlock Text="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="1" Grid.Row="1"/>
+                <TextBlock Text="Logic Board" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="0" Grid.Row="2"/>
+                <TextBlock Text="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="1" Grid.Row="2"/>
+                <TextBlock Text="Logic Board" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="0" Grid.Row="3"/>
+                <TextBlock Text="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Grid.Column="1" Grid.Row="3"/>
+
             </Grid>
         </StackPanel>
     </Border>
