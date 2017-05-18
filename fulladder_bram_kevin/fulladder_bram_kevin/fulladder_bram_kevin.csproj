@@ -70,6 +70,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\NAND.cs" />
+    <Compile Include="Model\Node.cs" />
+    <Compile Include="Model\NOT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
