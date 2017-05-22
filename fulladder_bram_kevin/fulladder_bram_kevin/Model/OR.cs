@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace fulladder_bram_kevin.Model
 {
-    public class NOT : Node
+    class OR : Node
     {
         public override void Run()
         {
-            if (base.inputs.Count == 1)
+            if (base.inputs.Count == 2)
             {
                 int count = 0;
                 foreach (int value in base.inputs)
                 {
                     count = count + value;
                 }
-                if (count == 2)
+                if (count == 0)
                 {
                     base.output = 0;
                 }
@@ -29,8 +29,9 @@ namespace fulladder_bram_kevin.Model
             }
             else
             {
-                Console.WriteLine(base.inputs.Count + " is no valid input amount for an NOT Node");
+                Console.WriteLine(base.inputs.Count + " is no valid input amount for an OR Node");
             }
         }
     }
+}
 }
