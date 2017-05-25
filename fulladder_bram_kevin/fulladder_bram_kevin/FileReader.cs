@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using fulladder_bram_kevin.Controller;
 
 //TODO
 //Test checkforloops
@@ -55,6 +56,10 @@ namespace fulladder_bram_kevin
                 _nodes.Clear();    //Empty nodes
                 _edges.Clear();    //Empty edges
                 getNodesAndEdgesFromFile();
+                printNodesAndEdges();
+                CircuitBuilder builder = new CircuitBuilder();
+                builder.CreateAllNodes(_nodes);
+                builder.CreateCircuit(_edges);
             }
             catch (Exception e)
             {
@@ -62,6 +67,24 @@ namespace fulladder_bram_kevin
                 Console.WriteLine(e.Message);
                 Console.ReadKey();
                 Environment.Exit(0);
+            }
+        }
+
+        private void printNodesAndEdges()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("------------NODES--------------");
+            foreach (KeyValuePair<string, string> node in _nodes)
+            {
+                Console.Write("Key: " + node.Key);
+                Console.WriteLine("   /   Node: " + node.Value);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("------------EDGES--------------");
+            foreach (KeyValuePair<string, string> edge in _edges)
+            {
+                Console.Write("Key: " + edge.Key);
+                Console.WriteLine("   /   Edge: " + edge.Value);
             }
         }
 

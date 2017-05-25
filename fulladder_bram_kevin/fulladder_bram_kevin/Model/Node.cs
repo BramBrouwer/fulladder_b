@@ -8,9 +8,9 @@ namespace fulladder_bram_kevin.Model
 {
     public abstract class Node
     {
-        public List<int> inputs;
+        public List<int> inputs = new List<int>();
         public int output;
-        public Node next;
+        public List<Node> nexts = new List<Node>();
 
         public abstract void Run();
     }
