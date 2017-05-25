@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fulladder_bram_kevin.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,18 @@ namespace fulladder_bram_kevin
         public MainWindow()
         {
             InitializeComponent();
+            NodeDrawer nd = new NodeDrawer(this.mainCanvas);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            FileReader fr = new FileReader();
+            FileReader fr = new FileReader(this.logBody);
             fr.chooseFile();
+        }
+
+        private void logBody_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
