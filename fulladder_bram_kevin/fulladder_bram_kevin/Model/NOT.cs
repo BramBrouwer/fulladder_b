@@ -25,7 +25,10 @@ namespace fulladder_bram_kevin.Model
                 {
                     base.output = 1;
                 }
-                base.next.inputs.Add(base.output);
+                foreach (Node next in base.nexts)
+                {
+                    next.inputs.Add(base.output);
+                }
             }
             else
             {

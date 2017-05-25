@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\CircuitBuilder.cs" />
     <Compile Include="Controller\NodeFactory.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -72,11 +73,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\AND.cs" />
+    <Compile Include="Model\Input.cs" />
     <Compile Include="Model\NAND.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Model\NOR.cs" />
     <Compile Include="Model\NOT.cs" />
     <Compile Include="Model\OR.cs" />
+    <Compile Include="Model\Probe.cs" />
     <Compile Include="Model\XOR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
