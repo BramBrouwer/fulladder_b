@@ -24,7 +24,7 @@ namespace fulladder_bram_kevin
         public MainWindow()
         {
             InitializeComponent();
-            NodeDrawer nd = new NodeDrawer(this.mainCanvas);
+            NodeDrawer nd = new NodeDrawer(this.mainCanvas,this.grid);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
