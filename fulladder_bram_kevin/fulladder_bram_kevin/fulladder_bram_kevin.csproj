@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\AND.cs" />
+    <Compile Include="Model\Circuit.cs" />
     <Compile Include="Model\Input.cs" />
     <Compile Include="Model\NAND.cs" />
     <Compile Include="Model\Node.cs" />
