@@ -21,7 +21,7 @@ namespace fulladder_bram_kevin.Model
                 Console.WriteLine(base.inputs.Count + " is no valid input amount for a PROBE Node");
             }
         }
-        public override Label accept(NodeVisitor nodeVisitor, String name)
+        public override Object accept(NodeVisitor nodeVisitor, String name)
         {
             return nodeVisitor.visit(this, name);
         }

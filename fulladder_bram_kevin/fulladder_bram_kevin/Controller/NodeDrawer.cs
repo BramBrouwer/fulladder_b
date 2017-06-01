@@ -54,7 +54,7 @@ namespace fulladder_bram_kevin.Controller
                 Console.WriteLine(colIndex);
                 //Label l = createLabel(entry.Key);
                 NodeDisplayVisitor n = new NodeDisplayVisitor();
-                Label l = entry.Value.accept(n, entry.Key);
+                Label l = (Label)entry.Value.accept(n, entry.Key);
                 Grid.SetRow(l, rowIndex);
                 Grid.SetColumn(l, colIndex);
                 grid.Children.Add(l);
