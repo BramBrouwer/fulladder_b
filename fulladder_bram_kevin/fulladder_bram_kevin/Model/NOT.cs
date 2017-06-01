@@ -1,8 +1,10 @@
-﻿using System;
+﻿using fulladder_bram_kevin.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace fulladder_bram_kevin.Model
 {
@@ -34,6 +36,10 @@ namespace fulladder_bram_kevin.Model
             {
                 Console.WriteLine(base.inputs.Count + " is no valid input amount for an NOT Node");
             }
+        }
+        public override Label accept(NodeVisitor nodeVisitor, String name)
+        {
+            return nodeVisitor.visit(this, name);
         }
     }
 }
