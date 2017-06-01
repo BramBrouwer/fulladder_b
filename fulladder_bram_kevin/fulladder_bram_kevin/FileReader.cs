@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using fulladder_bram_kevin.Controller;
 using System.Windows.Controls;
+using fulladder_bram_kevin.Model;
 
 //TODO
 //Test checkforloops
@@ -22,7 +23,6 @@ namespace fulladder_bram_kevin
         private string _filecontents;
         private Dictionary<string, string> _nodes = new Dictionary<string, string>();
         private Dictionary<string, string> _edges = new Dictionary<string, string>();
-        private int counter = 0;
         private TextBox logBody;
 
         public FileReader(TextBox logBody)
@@ -69,6 +69,7 @@ namespace fulladder_bram_kevin
                 CircuitBuilder builder = new CircuitBuilder();
                 builder.CreateAllNodes(_nodes);
                 builder.CreateCircuit(_edges);
+                Dictionary<String,Node> x = Circuit.Instance._nodes;
             }
             catch (Exception e)
             {

@@ -10,7 +10,13 @@
         <Button x:Name="button" Content="Open circuit" HorizontalAlignment="Left" Margin="404,521,0,0" VerticalAlignment="Top" Width="134" Height="22" Click="button_Click"/>
         <Label x:Name="label" Content="Log" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold" FontSize="15pt" BorderBrush="Black" BorderThickness="1px" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="logBody" HorizontalAlignment="Left" Height="504" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" TextChanged="logBody_TextChanged" IsReadOnly="True" BorderBrush="Black" BorderThickness="1px" TextAlignment="Center" />
-        <Canvas x:Name="mainCanvas" HorizontalAlignment="Left" Height="499" Margin="206,0,0,0" VerticalAlignment="Top" Width="666"/>
+        <Canvas x:Name="mainCanvas" HorizontalAlignment="Left" Height="86" Margin="206,0,0,0" VerticalAlignment="Top" Width="141">
+        </Canvas>
+        <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="486" Margin="206,13,0,0" VerticalAlignment="Top" Width="666">
+            <Grid ShowGridLines="True" Height="450" Width="599" Name="grid"/>
+        </ScrollViewer>
+
+
 
     </Grid>
 </Window>
