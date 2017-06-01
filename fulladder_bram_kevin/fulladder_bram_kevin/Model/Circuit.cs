@@ -40,6 +40,7 @@ namespace fulladder_bram_kevin.Model
             {
                 if(node.Value.GetType() == typeof(Input))
                 {
+                    node.Value.inputs.Add(1);
                     List<Node> currents = new List<Node>();
                     List<Node> nexts = new List<Node>();
                     currents.Add(node.Value);
