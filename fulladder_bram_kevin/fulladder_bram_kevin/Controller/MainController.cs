@@ -10,6 +10,7 @@ namespace fulladder_bram_kevin.Controller
     { 
         CircuitBuilder circuitbuilder;
         NodeDrawer nodeDrawer;
+        public FileReader filereader;
         NodeFactory nodeFactory;
         MainWindow mainWindow;
 
