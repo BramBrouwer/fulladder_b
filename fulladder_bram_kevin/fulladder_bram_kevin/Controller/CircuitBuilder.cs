@@ -68,7 +68,7 @@ namespace fulladder_bram_kevin.Controller
 
         public bool ValidateCircuit()
         {
-            Console.WriteLine("---------------OUTPUT--------------");
+            Console.WriteLine("---------------Validate--------------");
             bool circuitIsValid = true;
             foreach (KeyValuePair<string, Node> node in _nodes)
             {
