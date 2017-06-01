@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fulladder_bram_kevin.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,62 @@ namespace fulladder_bram_kevin.Controller
         private int col = 0;
         public NodeDrawer(Grid grid)
         {
-
             this.grid = grid;
-            setupGrid();
         }
 
+
+        public void draw()
+        {
+            grid.Children.Clear();
+            this.nodeAmount = Circuit.Instance._nodes.Count;
+            grid.Width = (nodeAmount+6) / 3 * 150;
+
+            for (int i = 0; i < (nodeAmount+6) / 3; i++)
+            {
+                ColumnDefinition col1 = new ColumnDefinition();
+                col1.Width = GridLength.Auto;
+                grid.ColumnDefinitions.Add(col1);
+            }
+
+            // Create Rows
+            RowDefinition gridRow1 = new RowDefinition();
+            gridRow1.Height = new GridLength(150);
+            RowDefinition gridRow2 = new RowDefinition();
+            gridRow2.Height = new GridLength(150);
+            RowDefinition gridRow3 = new RowDefinition();
+            gridRow3.Height = new GridLength(150);
+            grid.RowDefinitions.Add(gridRow1);
+            grid.RowDefinitions.Add(gridRow2);
+            grid.RowDefinitions.Add(gridRow3);
+
+            int colIndex = 1;
+            int rowIndex = 0;
+           
+            foreach (KeyValuePair<string, Node> entry in Circuit.Instance._nodes)
+            {
+                Console.WriteLine(rowIndex);
+                Console.WriteLine(colIndex);
+                //Label l = createLabel(entry.Key);
+                NodeDisplayVisitor n = new NodeDisplayVisitor();
+                Label l = entry.Value.accept(n, entry.Key);
+                Grid.SetRow(l, rowIndex);
+                Grid.SetColumn(l, colIndex);
+                grid.Children.Add(l);
+                if(rowIndex == 2)
+                {
+                    Grid.SetRow(l, rowIndex);
+                    Grid.SetColumn(l, colIndex);
+                    colIndex++;
+                    rowIndex = 0;
+                }
+                else
+                {
+                    Grid.SetRow(l, rowIndex);
+                    Grid.SetColumn(l, colIndex);
+                    rowIndex++;
+                }
+            }
+        }
 
 
         public void setupGrid()
@@ -46,6 +98,19 @@ namespace fulladder_bram_kevin.Controller
             grid.RowDefinitions.Add(gridRow3);
 
             addNodesTogrid();
+        }
+
+        public Label createLabel(String name)
+        {
+            Brush b = Brushes.Black;
+            Label label = new Label();
+            label.Height = 50;
+            label.Width = 100;
+            label.BorderBrush = b;
+            label.BorderThickness = new System.Windows.Thickness(1);
+            label.Content = name + System.Environment.NewLine + "  AND";
+            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            return label;
         }
 
 

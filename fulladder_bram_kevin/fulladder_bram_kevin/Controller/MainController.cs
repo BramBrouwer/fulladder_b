@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using fulladder_bram_kevin.Model;
 
 namespace fulladder_bram_kevin.Controller
 {
@@ -20,7 +21,7 @@ namespace fulladder_bram_kevin.Controller
             this.nodeDrawer = new NodeDrawer(mainWindow.grid);
             this.filereader = new FileReader(this,mainWindow.logBody);
             this.nodeFactory = new NodeFactory();
-            //this.circuitbuilder = new CircuitBuilder();
+            this.circuitbuilder = new CircuitBuilder();
         }
 
 
@@ -30,10 +31,16 @@ namespace fulladder_bram_kevin.Controller
             {
                 circuitbuilder.CreateAllNodes(filereader._nodes);
                 circuitbuilder.CreateCircuit(filereader._edges);
+                if(circuitbuilder.ValidateCircuit())
+                {
+                    //Console.Write("valid");
+                    nodeDrawer.draw();
+                    Circuit.Instance.run();
+                }
             }
         }
 
 
-
+    
     }
 }
