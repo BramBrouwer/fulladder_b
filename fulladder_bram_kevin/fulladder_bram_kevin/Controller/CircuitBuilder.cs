@@ -65,5 +65,67 @@ namespace fulladder_bram_kevin.Controller
             //Console.WriteLine("------------------------------------");
             Circuit.Instance._nodes = this._nodes;
         }
+
+        public bool ValidateCircuit()
+        {
+            bool circuitIsValid = true;
+            foreach (KeyValuePair<string, Node> node in _nodes)
+            {
+                if(node.Value.GetType() != typeof(Probe))
+                {
+                    if(node.Value.nexts.Count == 0)
+                    {
+                        circuitIsValid = false;
+                    }
+                }
+            }
+
+            if(circuitIsValid)
+            {
+                int counter = 0;
+                foreach (KeyValuePair<string, Node> node in _nodes)
+                {
+                    if (node.Value.GetType() != typeof(Input))
+                    {
+                        counter++;
+                    }
+                }
+                counter = _nodes.Count * counter;
+
+                foreach (KeyValuePair<string, Node> node in _nodes)
+                {
+                    if (node.Value.GetType() == typeof(Input))
+                    {
+                        List<Node> currents = new List<Node>();
+                        List<Node> nexts = new List<Node>();
+                        currents.Add(node.Value);
+
+                        while(currents.Count != 0)
+                        {
+                            if(counter > 0)
+                            {
+                                foreach (Node current in currents)
+                                {
+                                    counter--;
+                                    current.Run();
+                                    foreach (Node next in current.nexts)
+                                    {
+                                        nexts.Add(next);
+                                    }
+                                }
+                                currents = nexts;
+                                nexts.Clear();
+                            }
+                            else
+                            {
+                                circuitIsValid = false;
+                                currents.Clear();
+                            }
+                        }
+                    }
+                }
+            }
+            return circuitIsValid;
+        }
     }
 }
