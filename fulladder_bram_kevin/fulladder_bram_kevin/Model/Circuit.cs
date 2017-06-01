@@ -44,7 +44,7 @@ namespace fulladder_bram_kevin.Model
                     List<Node> nexts = new List<Node>();
                     currents.Add(node.Value);
 
-                    if(currents.Count != 0)
+                    while(currents.Count != 0)
                     {
                         foreach (Node current in currents)
                         {
