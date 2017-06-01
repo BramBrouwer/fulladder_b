@@ -68,13 +68,16 @@ namespace fulladder_bram_kevin.Controller
 
         public bool ValidateCircuit()
         {
+            Console.WriteLine("---------------OUTPUT--------------");
             bool circuitIsValid = true;
             foreach (KeyValuePair<string, Node> node in _nodes)
             {
                 if(node.Value.GetType() != typeof(Probe))
                 {
-                    if(node.Value.nexts.Count == 0)
+                   
+                    if (node.Value.nexts.Count == 0)
                     {
+                        Console.WriteLine("No Next");
                         circuitIsValid = false;
                     }
                 }
@@ -87,6 +90,7 @@ namespace fulladder_bram_kevin.Controller
                 {
                     if (node.Value.GetType() != typeof(Input))
                     {
+                        Console.WriteLine("Input detected");
                         counter++;
                     }
                 }
@@ -118,6 +122,7 @@ namespace fulladder_bram_kevin.Controller
                             }
                             else
                             {
+                                Console.WriteLine("Infinite Loop");
                                 circuitIsValid = false;
                                 currents.Clear();
                             }
@@ -125,6 +130,7 @@ namespace fulladder_bram_kevin.Controller
                     }
                 }
             }
+            Console.WriteLine("---------------------------------");
             return circuitIsValid;
         }
     }
