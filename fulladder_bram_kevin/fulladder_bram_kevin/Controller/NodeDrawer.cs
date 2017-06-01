@@ -24,9 +24,9 @@ namespace fulladder_bram_kevin.Controller
         public void draw()
         {
             this.nodeAmount = Circuit.Instance._nodes.Count;
-            grid.Width = nodeAmount / 3 * 150;
+            grid.Width = (nodeAmount+6) / 3 * 150;
 
-            for (int i = 0; i < nodeAmount / 3; i++)
+            for (int i = 0; i < (nodeAmount+6) / 3; i++)
             {
                 ColumnDefinition col1 = new ColumnDefinition();
                 col1.Width = GridLength.Auto;
@@ -49,12 +49,27 @@ namespace fulladder_bram_kevin.Controller
            
             foreach (KeyValuePair<string, Node> entry in Circuit.Instance._nodes)
             {
-                Label l = createLabel(entry.Key);
+                Console.WriteLine(rowIndex);
+                Console.WriteLine(colIndex);
+                //Label l = createLabel(entry.Key);
+                NodeDisplayVisitor n = new NodeDisplayVisitor();
+                Label l = entry.Value.accept(n, entry.Key);
                 Grid.SetRow(l, rowIndex);
                 Grid.SetColumn(l, colIndex);
                 grid.Children.Add(l);
-                colIndex++;
-                rowIndex++;
+                if(rowIndex == 2)
+                {
+                    Grid.SetRow(l, rowIndex);
+                    Grid.SetColumn(l, colIndex);
+                    colIndex++;
+                    rowIndex = 0;
+                }
+                else
+                {
+                    Grid.SetRow(l, rowIndex);
+                    Grid.SetColumn(l, colIndex);
+                    rowIndex++;
+                }
             }
         }
 

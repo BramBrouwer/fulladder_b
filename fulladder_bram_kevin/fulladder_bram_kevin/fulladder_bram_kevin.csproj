@@ -65,8 +65,10 @@
     </Compile>
     <Compile Include="Controller\CircuitBuilder.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Controller\NodeDisplayVisitor.cs" />
     <Compile Include="Controller\NodeDrawer.cs" />
     <Compile Include="Controller\NodeFactory.cs" />
+    <Compile Include="Controller\NodeVisitor.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
