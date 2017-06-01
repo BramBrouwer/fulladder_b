@@ -78,21 +78,6 @@ namespace fulladder_bram_kevin
             }
         }
 
-        private void logNodesAndEdges()
-        {
-            logBody.AppendText("Nodes found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
-            foreach (KeyValuePair<string, string> entry in this._nodes)
-            {
-                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
-            }
-
-            logBody.AppendText(System.Environment.NewLine + "Edges found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
-            foreach (KeyValuePair<string, string> entry in this._edges)
-            {
-                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
-            }
-        }
-
         /*
             Get all the nodes and edges given in the text file and add them to _nodes and _edges dictionary
         */
@@ -126,6 +111,21 @@ namespace fulladder_bram_kevin
 
                     }
                 }
+            }
+        }
+
+        private void logNodesAndEdges()
+        {
+            logBody.AppendText("Nodes found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
+            foreach (KeyValuePair<string, string> entry in this._nodes)
+            {
+                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
+            }
+
+            logBody.AppendText(System.Environment.NewLine + "Edges found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
+            foreach (KeyValuePair<string, string> entry in this._edges)
+            {
+                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
             }
         }
 

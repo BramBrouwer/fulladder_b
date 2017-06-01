@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\CircuitBuilder.cs" />
+    <Compile Include="Controller\MainController.cs" />
     <Compile Include="Controller\NodeDrawer.cs" />
     <Compile Include="Controller\NodeFactory.cs" />
     <Compile Include="FileReader.cs" />
