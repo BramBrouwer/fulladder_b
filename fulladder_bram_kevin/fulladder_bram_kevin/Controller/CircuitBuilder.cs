@@ -25,44 +25,45 @@ namespace fulladder_bram_kevin.Controller
 
         public void CreateAllNodes(Dictionary<string, string> nodesToBuild)
         {
-            //Console.WriteLine("-------------------Create all nodes----------------");
+            _nodes.Clear();
+            Console.WriteLine("-------------------Create all nodes----------------");
             foreach (KeyValuePair<string, string> nodeString in nodesToBuild)
             {
-                //Console.WriteLine("------------------------------------");
+                Console.WriteLine("------------------------------------");
                 string key = nodeString.Key;
-                //Console.WriteLine("key:--" + key + "--");
+                Console.WriteLine("key:--" + key + "--");
                 string value = nodeString.Value;
-                //Console.WriteLine("value:--" + value + "--");
+                Console.WriteLine("value:--" + value + "--");
                 Node node = _factory.CreateNode(value);
-                //Console.WriteLine("Node created");
+                Console.WriteLine("Node created");
                 _nodes.Add(key, node);
-                //Console.WriteLine("Node added");
+                Console.WriteLine("Node added");
             }
-            //Console.WriteLine("------------------------------------");
+            Console.WriteLine("------------------------------------");
         }
 
         public void CreateCircuit(Dictionary<string, string> edges)
         {
-            //Console.WriteLine("-----------------Create circuit-------------------");
+            Console.WriteLine("-----------------Create circuit-------------------");
             foreach (KeyValuePair<string, string> edge in edges)
             {
-                //Console.WriteLine("------------------------------------");
+                Console.WriteLine("------------------------------------");
                 string key = edge.Key;
-                //Console.WriteLine("key: " + key);
+                Console.WriteLine("key: " + key);
                 List<string> values = edge.Value.Split(',').ToList();
-                //Console.WriteLine("Value list created");
+                Console.WriteLine("Value list created");
                 Node node = _nodes[key];
-                //Console.WriteLine("Get node from list");
+                Console.WriteLine("Get node from list");
                 foreach (string next in values)
                 {
-                    //Console.WriteLine("Splitted--" + next + "--");
+                    Console.WriteLine("Splitted--" + next + "--");
                     Node nextNode = _nodes[next];
-                   // Console.WriteLine("next created");
+                    Console.WriteLine("next created");
                     node.nexts.Add(nextNode);
-                    //Console.WriteLine("next added");
+                    Console.WriteLine("next added");
                 }
             }
-            //Console.WriteLine("------------------------------------");
+            Console.WriteLine("------------------------------------");
             Circuit.Instance._nodes = this._nodes;
         }
 
@@ -88,8 +89,10 @@ namespace fulladder_bram_kevin.Controller
                 int counter = 0;
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
-                    if (node.Value.GetType() != typeof(Input))
+                    if (node.Value.GetType() == typeof(Input))
                     {
+                        node.Value.inputs.Add(1);
+                        Console.WriteLine("Input Key: "+node.Key);
                         counter++;
                     }
                 }
