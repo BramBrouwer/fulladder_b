@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using fulladder_bram_kevin.Controller;
 using System.Windows.Controls;
+using fulladder_bram_kevin.Model;
 
 //TODO
 //Test checkforloops
@@ -22,7 +23,6 @@ namespace fulladder_bram_kevin
         private string _filecontents;
         private Dictionary<string, string> _nodes = new Dictionary<string, string>();
         private Dictionary<string, string> _edges = new Dictionary<string, string>();
-        private int counter = 0;
         private TextBox logBody;
 
         public FileReader(TextBox logBody)
@@ -69,26 +69,12 @@ namespace fulladder_bram_kevin
                 CircuitBuilder builder = new CircuitBuilder();
                 builder.CreateAllNodes(_nodes);
                 builder.CreateCircuit(_edges);
+                Dictionary<String,Node> x = Circuit.Instance._nodes;
             }
             catch (Exception e)
             {
                 logBody.AppendText("Invalid file" + System.Environment.NewLine + "-" + System.Environment.NewLine);
                 logBody.AppendText(e.Message + System.Environment.NewLine + "-" + System.Environment.NewLine);
-            }
-        }
-
-        private void logNodesAndEdges()
-        {
-            logBody.AppendText("Nodes found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
-            foreach (KeyValuePair<string, string> entry in this._nodes)
-            {
-                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
-            }
-
-            logBody.AppendText(System.Environment.NewLine + "Edges found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
-            foreach (KeyValuePair<string, string> entry in this._edges)
-            {
-                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
             }
         }
 
@@ -125,6 +111,21 @@ namespace fulladder_bram_kevin
 
                     }
                 }
+            }
+        }
+
+        private void logNodesAndEdges()
+        {
+            logBody.AppendText("Nodes found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
+            foreach (KeyValuePair<string, string> entry in this._nodes)
+            {
+                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
+            }
+
+            logBody.AppendText(System.Environment.NewLine + "Edges found" + System.Environment.NewLine + "_______________" + System.Environment.NewLine);
+            foreach (KeyValuePair<string, string> entry in this._edges)
+            {
+                logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
             }
         }
 

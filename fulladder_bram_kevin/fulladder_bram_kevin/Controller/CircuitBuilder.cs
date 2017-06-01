@@ -18,6 +18,11 @@ namespace fulladder_bram_kevin.Controller
             _nodes = new Dictionary<string, Node>();
         }
 
+        public Dictionary<string,Node> getNodes()
+        {
+            return _nodes;
+        }
+
         public void CreateAllNodes(Dictionary<string, string> nodesToBuild)
         {
             //Console.WriteLine("-------------------Create all nodes----------------");
@@ -58,6 +63,7 @@ namespace fulladder_bram_kevin.Controller
                 }
             }
             //Console.WriteLine("------------------------------------");
+            Circuit.Instance._nodes = this._nodes;
         }
     }
 }

@@ -21,16 +21,17 @@ namespace fulladder_bram_kevin
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainController mainController;
         public MainWindow()
         {
             InitializeComponent();
-            NodeDrawer nd = new NodeDrawer(this.mainCanvas);
+            mainController = new MainController(this);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            FileReader fr = new FileReader(this.logBody);
-            fr.chooseFile();
+            mainController.filereader.chooseFile();
+            //FileReader fr = new FileReader(this.logBody);
         }
 
         private void logBody_TextChanged(object sender, TextChangedEventArgs e)
