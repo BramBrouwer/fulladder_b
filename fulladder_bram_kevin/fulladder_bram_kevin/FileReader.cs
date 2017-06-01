@@ -21,30 +21,28 @@ namespace fulladder_bram_kevin
     class FileReader
     {
         private string _filecontents;
-        private Dictionary<string, string> _nodes = new Dictionary<string, string>();
-        private Dictionary<string, string> _edges = new Dictionary<string, string>();
+        public Dictionary<string, string> _nodes = new Dictionary<string, string>();
+        public Dictionary<string, string> _edges = new Dictionary<string, string>();
         private TextBox logBody;
+        private MainController mainController;
 
-        public FileReader(TextBox logBody)
+        public FileReader(MainController mainController, TextBox logBody)
         {
             this.logBody = logBody;
+            this.mainController = mainController;
         }
 
-        public void chooseFile()
+        public Boolean chooseFile()
         {
             // Create OpenFileDialog 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-
 
             // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".txt";
             dlg.Filter = "Text Files (*.txt)|*.txt";
 
-
             // Display OpenFileDialog by calling ShowDialog method 
             Nullable<bool> result = dlg.ShowDialog();
-
 
             // Get the selected file name and read all text
             if (result == true)
@@ -52,11 +50,15 @@ namespace fulladder_bram_kevin
                 // Open document 
                 string filename = dlg.FileName;
                 _filecontents = File.ReadAllText(dlg.FileName);
-                readFile();
+                return readFile();
+            }
+            else
+            {
+                return false;
             }
         }
-
-        public void readFile()
+       
+        public Boolean readFile()
         {
             logBody.AppendText("Reading file.." + System.Environment.NewLine + "-" + System.Environment.NewLine);
             try
@@ -66,15 +68,13 @@ namespace fulladder_bram_kevin
                 getNodesAndEdgesFromFile();
                 logBody.AppendText("File read.." + System.Environment.NewLine + "-" + System.Environment.NewLine);
                 logNodesAndEdges();
-                CircuitBuilder builder = new CircuitBuilder();
-                builder.CreateAllNodes(_nodes);
-                builder.CreateCircuit(_edges);
-                Dictionary<String,Node> x = Circuit.Instance._nodes;
+                return true;
             }
             catch (Exception e)
             {
                 logBody.AppendText("Invalid file" + System.Environment.NewLine + "-" + System.Environment.NewLine);
                 logBody.AppendText(e.Message + System.Environment.NewLine + "-" + System.Environment.NewLine);
+                return false;
             }
         }
 

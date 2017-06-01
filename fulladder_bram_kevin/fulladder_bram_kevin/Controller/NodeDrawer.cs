@@ -12,12 +12,11 @@ namespace fulladder_bram_kevin.Controller
     class NodeDrawer
     {
         private Grid grid;
-        private Canvas mainCanvas;
         private int nodeAmount = 30;     //Keep track of how many nodes weve drawn so we know where to draw
         private int col = 0;
         public NodeDrawer(Grid grid)
         {
-            this.mainCanvas = mainCanvas;
+
             this.grid = grid;
             setupGrid();
         }
