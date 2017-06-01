@@ -25,6 +25,7 @@ namespace fulladder_bram_kevin.Controller
 
         public void CreateAllNodes(Dictionary<string, string> nodesToBuild)
         {
+            _nodes.Clear();
             //Console.WriteLine("-------------------Create all nodes----------------");
             foreach (KeyValuePair<string, string> nodeString in nodesToBuild)
             {

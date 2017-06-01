@@ -31,9 +31,10 @@ namespace fulladder_bram_kevin.Controller
             {
                 circuitbuilder.CreateAllNodes(filereader._nodes);
                 circuitbuilder.CreateCircuit(filereader._edges);
-                nodeDrawer.draw();
                 if(circuitbuilder.ValidateCircuit())
                 {
+                    //Console.Write("valid");
+                    nodeDrawer.draw();
                     Circuit.Instance.run();
                 }
             }
