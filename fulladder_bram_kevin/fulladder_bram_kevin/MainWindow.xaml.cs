@@ -31,7 +31,6 @@ namespace fulladder_bram_kevin
         private void button_Click(object sender, RoutedEventArgs e)
         {
             mainController.openFile();
-            //FileReader fr = new FileReader(this.logBody);
         }
 
         private void logBody_TextChanged(object sender, TextChangedEventArgs e)
