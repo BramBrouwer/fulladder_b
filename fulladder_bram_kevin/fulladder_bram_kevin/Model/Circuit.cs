@@ -28,7 +28,9 @@ namespace fulladder_bram_kevin.Model
                 }
                 return instance;
             }
+
         }
+
 
         public void run()
         {

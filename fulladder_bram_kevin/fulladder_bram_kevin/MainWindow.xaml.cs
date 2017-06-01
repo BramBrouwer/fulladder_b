@@ -30,7 +30,7 @@ namespace fulladder_bram_kevin
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            mainController.filereader.chooseFile();
+            mainController.openFile();
             //FileReader fr = new FileReader(this.logBody);
         }
 
