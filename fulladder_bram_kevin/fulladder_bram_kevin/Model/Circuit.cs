@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using fulladder_bram_kevin.Model;
 
 namespace fulladder_bram_kevin.Model
 {
@@ -14,7 +15,7 @@ namespace fulladder_bram_kevin.Model
 
     class Circuit
     {
-        public Dictionary<String, Node> _nodes;
+        public Dictionary<string, Node> _nodes;
         private static Circuit instance;
         private Circuit() { }
 
@@ -33,6 +34,38 @@ namespace fulladder_bram_kevin.Model
         public void run()
         {
             //Run circuit 
+            foreach (KeyValuePair<string, Node> node in _nodes)
+            {
+                if(node.Value.GetType() == typeof(Input))
+                {
+                    List<Node> currents = new List<Node>();
+                    List<Node> nexts = new List<Node>();
+                    currents.Add(node.Value);
+
+                    if(currents.Count != 0)
+                    {
+                        foreach (Node current in currents)
+                        {
+                            current.Run();
+                            foreach (Node next in current.nexts)
+                            {
+                                nexts.Add(next);
+                            }
+                        }
+                        currents = nexts;
+                        nexts.Clear();
+                    }
+                }
+            }
+            Console.WriteLine("---------------OUTPUT--------------");
+            foreach (KeyValuePair<string, Node> node in _nodes)
+            {
+                if (node.Value.GetType() == typeof(Probe))
+                {
+                    Console.WriteLine("Probe: "+node.Key+" output: "+node.Value.output);
+                }
+            }
+            Console.WriteLine("-----------------------------------");
         }
     }
 }
