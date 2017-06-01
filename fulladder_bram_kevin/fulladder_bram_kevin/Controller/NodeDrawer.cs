@@ -23,6 +23,7 @@ namespace fulladder_bram_kevin.Controller
 
         public void draw()
         {
+            grid.Children.Clear();
             this.nodeAmount = Circuit.Instance._nodes.Count;
             grid.Width = (nodeAmount+6) / 3 * 150;
 
