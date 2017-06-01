@@ -90,10 +90,10 @@ namespace fulladder_bram_kevin.Controller
                 {
                     if (node.Value.GetType() != typeof(Input))
                     {
-                        Console.WriteLine("Input detected");
                         counter++;
                     }
                 }
+                Console.WriteLine("Input Count: "+counter);
                 counter = _nodes.Count * counter;
 
                 foreach (KeyValuePair<string, Node> node in _nodes)
