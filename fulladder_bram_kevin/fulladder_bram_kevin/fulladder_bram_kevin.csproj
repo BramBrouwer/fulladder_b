@@ -69,6 +69,7 @@
     <Compile Include="Controller\NodeDrawer.cs" />
     <Compile Include="Controller\NodeFactory.cs" />
     <Compile Include="Controller\NodeVisitor.cs" />
+    <Compile Include="Controller\State.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
