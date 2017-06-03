@@ -11,10 +11,10 @@ using System.Windows.Media;
 namespace fulladder_bram_kevin.Controller
 {
     /*
-    Implementatie van de nodevisitor, deze is voor het tekenen van nodes
-    Als er node types toegevoegd worden kan de gebruiker hier simpel ook een nieuw uiterlijk toevoegen
-    Op het moment wijken de nodes niet heel erg van elkaar af
-    Maar de visitor zou er van pas komen als iedere node een aparte/vorm grootte zou hebben
+        Implementatie van de nodevisitor, deze is voor het tekenen van nodes
+        Als er node types toegevoegd worden kan de gebruiker hier simpel ook een nieuw uiterlijk toevoegen
+        Op het moment wijken de nodes niet heel erg van elkaar af
+        Maar de visitor zou er van pas komen als iedere node een aparte/vorm grootte zou hebben
     */
     class NodeDisplayVisitor : NodeVisitor
     {
