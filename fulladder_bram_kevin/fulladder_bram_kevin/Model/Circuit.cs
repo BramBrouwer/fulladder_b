@@ -23,7 +23,7 @@ namespace fulladder_bram_kevin.Model
         public Circuit(Dictionary<string,Node> _nodes)
         {
             this._nodes = _nodes;
-            currentState = null;
+            currentState = new Invalid();
         }
 
         public void set_state(State s)
@@ -36,46 +36,5 @@ namespace fulladder_bram_kevin.Model
 
             this.currentState.run(this, logBody);
         }
-
-
-        /*
-        //Run circuit 
-        foreach (KeyValuePair<string, Node> node in _nodes)
-        {
-            if(node.Value.GetType() == typeof(Input))
-            {
-
-                List<Node> currents = new List<Node>();
-                List<Node> nexts = new List<Node>();
-                currents.Add(node.Value);
-
-                while(currents.Count != 0)
-                {
-                    foreach (Node current in currents)
-                    {
-                        current.Run();
-                        foreach (Node next in current.nexts)
-                        {
-                            nexts.Add(next);
-                        }
-                    }
-                    currents = nexts;
-                    nexts.Clear();
-                }
-            }
-        }
-        Console.WriteLine("---------------OUTPUT--------------");
-        foreach (KeyValuePair<string, Node> node in _nodes)
-        {
-            if (node.Value.GetType() == typeof(Probe))
-            {
-                Console.WriteLine("Probe: "+node.Key+" output: "+node.Value.output);
-            }
-        }
-        Console.WriteLine("-----------------------------------");
-       */
-
-
-
     }
 }

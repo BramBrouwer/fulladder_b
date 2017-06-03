@@ -100,19 +100,6 @@ namespace fulladder_bram_kevin.Controller
             addNodesTogrid();
         }
 
-        public Label createLabel(String name)
-        {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = name + System.Environment.NewLine + "  AND";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
-            return label;
-        }
-
 
         //TODO voeg hier de nodes toe aan de hand van het aantal nodes dat je hebt
         //Inputs op de eerste column
