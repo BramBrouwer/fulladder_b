@@ -12,9 +12,9 @@ namespace fulladder_bram_kevin.Controller
         private Dictionary<string, Node> _nodes;
         private NodeFactory _factory;
 
-        public CircuitBuilder()
+        public CircuitBuilder(NodeFactory nodeFactory)
         {
-            _factory = new NodeFactory();
+            _factory = nodeFactory;
             _nodes = new Dictionary<string, Node>();
         }
 
