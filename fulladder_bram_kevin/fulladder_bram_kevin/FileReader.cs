@@ -127,6 +127,7 @@ namespace fulladder_bram_kevin
             {
                 logBody.AppendText(entry.Key + " - " + entry.Value + System.Environment.NewLine);
             }
+            logBody.AppendText(" - " + System.Environment.NewLine);
         }
 
 

@@ -35,8 +35,11 @@ namespace fulladder_bram_kevin
 
         private void logBody_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            logBody.ScrollToEnd();            
         }
+
+
+
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
