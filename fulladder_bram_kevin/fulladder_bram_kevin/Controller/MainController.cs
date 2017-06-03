@@ -31,7 +31,7 @@ namespace fulladder_bram_kevin.Controller
             this.nodeFactory.AddNodeType("NOT", typeof(NOT));
             this.nodeFactory.AddNodeType("OR", typeof(OR));
             this.nodeFactory.AddNodeType("XOR", typeof(XOR));
-            this.circuitbuilder = new CircuitBuilder();
+            this.circuitbuilder = new CircuitBuilder(nodeFactory);
         }
 
            //TODO 
