@@ -10,15 +10,20 @@ namespace fulladder_bram_kevin.Model
 {
     public class Probe : Node
     {
+
+        public Probe()
+        {
+            base.output = 2;
+        }
+
         public override void Run()
         {
             if (base.inputs.Count == 1)
             {
-                base.output = base.inputs.First<int>();
-            }
-            else
-            {
-                Console.WriteLine(base.inputs.Count + " is no valid input amount for a PROBE Node");
+                if (base.output == 2)
+                {
+                    base.output = base.inputs.First<int>();
+                }
             }
         }
         public override Object accept(NodeVisitor nodeVisitor, String name)
