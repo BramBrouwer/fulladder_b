@@ -42,7 +42,7 @@ namespace fulladder_bram_kevin.Model
             }
         }
 
-        public override Label accept(NodeVisitor nodeVisitor, String name)
+        public override Object accept(NodeVisitor nodeVisitor, String name)
         {
             return nodeVisitor.visit(this, name);
         }

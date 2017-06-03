@@ -16,6 +16,6 @@ namespace fulladder_bram_kevin.Model
 
         public abstract void Run();
 
-        public abstract Label accept(NodeVisitor nodeVisitor, String name);
+        public abstract Object accept(NodeVisitor nodeVisitor, String name);
     }
 }

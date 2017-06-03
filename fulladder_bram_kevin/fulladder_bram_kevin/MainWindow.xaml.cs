@@ -37,5 +37,10 @@ namespace fulladder_bram_kevin
         {
 
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            mainController.run();
+        }
     }
 }

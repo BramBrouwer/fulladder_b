@@ -11,14 +11,14 @@ using System.Windows.Media;
 namespace fulladder_bram_kevin.Controller
 {
     /*
-    Implementatie van de nodevisitor, deze is voor het tekenen van nodes
-    Als er node types toegevoegd worden kan de gebruiker hier simpel ook een nieuw uiterlijk toevoegen
-    Op het moment wijken de nodes niet heel erg van elkaar af
-    Maar de visitor zou er van pas komen als iedere node een aparte/vorm grootte zou hebben
+        Implementatie van de nodevisitor, deze is voor het tekenen van nodes
+        Als er node types toegevoegd worden kan de gebruiker hier simpel ook een nieuw uiterlijk toevoegen
+        Op het moment wijken de nodes niet heel erg van elkaar af
+        Maar de visitor zou er van pas komen als iedere node een aparte/vorm grootte zou hebben
     */
     class NodeDisplayVisitor : NodeVisitor
     {
-        public Label visit(NOR nor, string s)
+        public Object visit(NOR nor, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -31,7 +31,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(Input input, string s)
+        public Object visit(Input input, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -44,7 +44,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(Probe probe, string s)
+        public Object visit(Probe probe, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -57,7 +57,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(XOR xor, string s)
+        public Object visit(XOR xor, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -70,7 +70,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(OR or, string s)
+        public Object visit(OR or, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -83,7 +83,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(NOT not, string s)
+        public Object visit(NOT not, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -96,7 +96,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(NAND nand, string s)
+        public Object visit(NAND nand, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -109,7 +109,7 @@ namespace fulladder_bram_kevin.Controller
             return label;
         }
 
-        public Label visit(AND and, string s)
+        public Object visit(AND and, string s)
         {
             Brush b = Brushes.Black;
             Label label = new Label();

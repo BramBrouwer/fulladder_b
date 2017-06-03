@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using fulladder_bram_kevin.Model;
+using fulladder_bram_kevin.Controller;
+using System.Windows.Controls;
 
 namespace fulladder_bram_kevin.Model
 {
@@ -16,73 +18,23 @@ namespace fulladder_bram_kevin.Model
     class Circuit
     {
         public Dictionary<string, Node> _nodes;
-        private static Circuit instance;
-        private Circuit() { }
+        private State currentState;
 
-        public static Circuit Instance
+        public Circuit(Dictionary<string,Node> _nodes)
         {
-            get
-            {
-                if(instance == null)
-                {
-                    instance = new Circuit();
-                }
-                return instance;
-            }
-
+            this._nodes = _nodes;
+            currentState = new Invalid();
         }
 
-
-        public void run()
+        public void set_state(State s)
         {
-            //Run circuit 
-            Console.WriteLine("---------------RUN--------------");
-            foreach (KeyValuePair<string, Node> node in _nodes)
-            {
-                if(node.Value.GetType() == typeof(Input))
-                {
-                    List<Node> currents = new List<Node>();
-                    List<Node> nexts = new List<Node>();
-                    currents.Add(node.Value);
+            currentState = s;
+        }
 
-                    while(currents.Count != 0)
-                    {
-                        foreach (Node current in currents)
-                        {
-                            current.Run();
-                            foreach (Node next in current.nexts)
-                            {
-                                nexts.Add(next);
-                            }
-                        }
-                        currents.Clear();
-                        foreach (Node next in nexts)
-                        {
-                            currents.Add(next);
-                        }
-                       
-                        nexts.Clear();
-                    }
-                }
-            }
-            Console.WriteLine("---------------OUTPUT--------------");
-            foreach (KeyValuePair<string, Node> node in _nodes)
-            {
-                if (node.Value.GetType() == typeof(Probe))
-                {
-                    Console.WriteLine("Probe: " + node.Key + " output: " + node.Value.output);
-                }
-            }
-            Console.WriteLine("-----------------------------------");
-            foreach (KeyValuePair<string, Node> node in _nodes)
-            {
-                if (node.Value.GetType() != typeof(Input))
-                {
-                    node.Value.inputs.Clear();
-                }
-                node.Value.output = 2;
-            }
+        internal void run(TextBox logBody)
+        {
 
+            this.currentState.run(this, logBody);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace fulladder_bram_kevin.Controller
         public FileReader filereader;
         NodeFactory nodeFactory;
         MainWindow mainWindow;
+        Circuit circuit;
 
         public MainController(MainWindow mainWindow)
         {
@@ -21,23 +22,45 @@ namespace fulladder_bram_kevin.Controller
             this.nodeDrawer = new NodeDrawer(mainWindow.grid);
             this.filereader = new FileReader(this,mainWindow.logBody);
             this.nodeFactory = new NodeFactory();
+            this.nodeFactory.AddNodeType("INPUT_HIGH", typeof(Input));
+            this.nodeFactory.AddNodeType("INPUT_LOW", typeof(Input));
+            this.nodeFactory.AddNodeType("PROBE", typeof(Probe));
+            this.nodeFactory.AddNodeType("AND", typeof(AND));
+            this.nodeFactory.AddNodeType("NAND", typeof(NAND));
+            this.nodeFactory.AddNodeType("NOR", typeof(NOR));
+            this.nodeFactory.AddNodeType("NOT", typeof(NOT));
+            this.nodeFactory.AddNodeType("OR", typeof(OR));
+            this.nodeFactory.AddNodeType("XOR", typeof(XOR));
             this.circuitbuilder = new CircuitBuilder();
         }
 
-
+           //TODO 
+           //Circuit geen singleton maar gewoon instance retunen hier na het creeeren
+           //Bij het creeren wordt de state op unvalidated gezet.
+           //Na het valideren van het circuit wordt de state op validat/invalid gezet
         public void openFile()
         {
             if (filereader.chooseFile())
             {
                 circuitbuilder.CreateAllNodes(filereader._nodes);
-                circuitbuilder.CreateCircuit(filereader._edges);
+                circuit = new Circuit(circuitbuilder.CreateCircuit(filereader._edges));
                 if(circuitbuilder.ValidateCircuit())
                 {
-                    //Console.Write("valid");
-                    nodeDrawer.draw();
-                    Circuit.Instance.run();
+                    circuit.set_state(new Valid());
+                    //mainWindow.logBody.AppendText("Circuit vali");
+                    nodeDrawer.draw(circuit);
+                }
+                else
+                {
+                    circuit.set_state(new Invalid());
                 }
             }
+        }
+        //Called when the user clicks the run button, behaviour depends on the circuits state
+        public void run()
+        {
+            if(circuit == null) { mainWindow.logBody.AppendText("No circuit found!"); return; }
+            circuit.run(mainWindow.logBody);
         }
 
 
