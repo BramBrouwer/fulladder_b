@@ -12,9 +12,8 @@ namespace fulladder_bram_kevin.Model
     {
         public override void run(Circuit circuit, TextBox logBody)
         {
-            //TODO try to validate circuit, set state to valid if succesfull
-            //Make circuit builder available here?
-            //circuit.set_state(new )
+            //TODO Validate circuit
+            //Message user to run the circuit again (state will be changed)
             throw new NotImplementedException();
         }
 
