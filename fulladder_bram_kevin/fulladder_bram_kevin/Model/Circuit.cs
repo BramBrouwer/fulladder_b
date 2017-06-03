@@ -36,11 +36,11 @@ namespace fulladder_bram_kevin.Model
         public void run()
         {
             //Run circuit 
+            Console.WriteLine("---------------RUN--------------");
             foreach (KeyValuePair<string, Node> node in _nodes)
             {
                 if(node.Value.GetType() == typeof(Input))
                 {
-                    
                     List<Node> currents = new List<Node>();
                     List<Node> nexts = new List<Node>();
                     currents.Add(node.Value);
@@ -55,7 +55,12 @@ namespace fulladder_bram_kevin.Model
                                 nexts.Add(next);
                             }
                         }
-                        currents = nexts;
+                        currents.Clear();
+                        foreach (Node next in nexts)
+                        {
+                            currents.Add(next);
+                        }
+                       
                         nexts.Clear();
                     }
                 }
@@ -65,10 +70,19 @@ namespace fulladder_bram_kevin.Model
             {
                 if (node.Value.GetType() == typeof(Probe))
                 {
-                    Console.WriteLine("Probe: "+node.Key+" output: "+node.Value.output);
+                    Console.WriteLine("Probe: " + node.Key + " output: " + node.Value.output);
                 }
             }
             Console.WriteLine("-----------------------------------");
+            foreach (KeyValuePair<string, Node> node in _nodes)
+            {
+                if (node.Value.GetType() != typeof(Input))
+                {
+                    node.Value.inputs.Clear();
+                }
+                node.Value.output = 2;
+            }
+
         }
     }
 }

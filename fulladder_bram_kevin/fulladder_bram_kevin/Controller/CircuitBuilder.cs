@@ -30,17 +30,9 @@ namespace fulladder_bram_kevin.Controller
             Console.WriteLine("-------------------Create all nodes----------------");
             foreach (KeyValuePair<string, string> nodeString in nodesToBuild)
             {
-                Console.WriteLine("------------------------------------");
-                string key = nodeString.Key;
-                Console.WriteLine("key:--" + key + "--");
-                string value = nodeString.Value;
-                Console.WriteLine("value:--" + value + "--");
-                Node node = _factory.CreateNode(value);
-                Console.WriteLine("Node created");
-                _nodes.Add(key, node);
-                Console.WriteLine("Node added");
+                Node node = _factory.CreateNode(nodeString.Value);
+                _nodes.Add(nodeString.Key, node);
             }
-            Console.WriteLine("------------------------------------");
         }
 
         public void CreateCircuit(Dictionary<string, string> edges)
@@ -48,23 +40,13 @@ namespace fulladder_bram_kevin.Controller
             Console.WriteLine("-----------------Create circuit-------------------");
             foreach (KeyValuePair<string, string> edge in edges)
             {
-                Console.WriteLine("------------------------------------");
                 string key = edge.Key;
-                Console.WriteLine("key: " + key);
                 List<string> values = edge.Value.Split(',').ToList();
-                Console.WriteLine("Value list created");
-                Node node = _nodes[key];
-                Console.WriteLine("Get node from list");
                 foreach (string next in values)
                 {
-                    Console.WriteLine("Splitted--" + next + "--");
-                    Node nextNode = _nodes[next];
-                    Console.WriteLine("next created");
-                    node.nexts.Add(nextNode);
-                    Console.WriteLine("next added");
+                    _nodes[key].nexts.Add(_nodes[next]);
                 }
             }
-            Console.WriteLine("------------------------------------");
             Circuit.Instance._nodes = this._nodes;
         }
 
@@ -87,19 +69,15 @@ namespace fulladder_bram_kevin.Controller
 
             if(circuitIsValid)
             {
-                int counter = 0;
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
                     if (node.Value.GetType() == typeof(Input))
                     {
                         node.Value.inputs.Add(1);
-                        Console.WriteLine("Input Key: "+node.Key);
-                        counter++;
                     }
                 }
-                Console.WriteLine("Input Count: "+counter);
-                counter = _nodes.Count * counter;
 
+                int counter = _nodes.Count * _nodes.Count;
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
                     if (node.Value.GetType() == typeof(Input))
@@ -108,9 +86,9 @@ namespace fulladder_bram_kevin.Controller
                         List<Node> nexts = new List<Node>();
                         currents.Add(node.Value);
 
-                        while(currents.Count != 0)
+                        while (currents.Count != 0)
                         {
-                            if(counter > 0)
+                            if (counter > 0)
                             {
                                 foreach (Node current in currents)
                                 {
@@ -121,7 +99,12 @@ namespace fulladder_bram_kevin.Controller
                                         nexts.Add(next);
                                     }
                                 }
-                                currents = nexts;
+                                currents.Clear();
+                                foreach (Node next in nexts)
+                                {
+                                    currents.Add(next);
+                                }
+
                                 nexts.Clear();
                             }
                             else
@@ -132,6 +115,14 @@ namespace fulladder_bram_kevin.Controller
                             }
                         }
                     }
+                }
+                foreach (KeyValuePair<string, Node> node in _nodes)
+                {
+                    if (node.Value.GetType() != typeof(Input))
+                    {
+                        node.Value.inputs.Clear();
+                    }
+                    node.Value.output = 2;
                 }
             }
             Console.WriteLine("---------------------------------");

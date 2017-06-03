@@ -10,6 +10,12 @@ namespace fulladder_bram_kevin.Model
 {
     public class OR : Node
     {
+
+        public OR()
+        {
+            base.output = 2;
+        }
+
         public override void Run()
         {
             if (base.inputs.Count == 2)
@@ -19,23 +25,21 @@ namespace fulladder_bram_kevin.Model
                 {
                     count = count + value;
                 }
-                if (count == 0)
+                if (base.output == 2)
                 {
-                    base.output = 0;
+                    if (count == 0)
+                    {
+                        base.output = 0;
+                    }
+                    else
+                    {
+                        base.output = 1;
+                    }
+                    foreach (Node next in base.nexts)
+                    {
+                        next.inputs.Add(base.output);
+                    }
                 }
-                else
-                {
-                    base.output = 1;
-                }
-                foreach(Node next in base.nexts)
-                {
-                    next.inputs.Add(base.output);
-                }
-                
-            }
-            else
-            {
-                Console.WriteLine(base.inputs.Count + " is no valid input amount for an OR Node");
             }
         }
         public override Label accept(NodeVisitor nodeVisitor, String name)

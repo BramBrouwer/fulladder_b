@@ -10,20 +10,25 @@ namespace fulladder_bram_kevin.Model
 {
     public class Input : Node
     {
+
+        public Input()
+        {
+            base.output = 2;
+        }
+
         public override void Run()
         {
             if (base.inputs.Count == 1)
             {
-                base.output = base.inputs.First<int>();
-
-                foreach (Node next in base.nexts)
+                if (base.output == 2)
                 {
-                    next.inputs.Add(base.output);
+                    base.output = base.inputs.First<int>();
+
+                    foreach (Node next in base.nexts)
+                    {
+                        next.inputs.Add(base.output);
+                    }
                 }
-            }
-            else
-            {
-                Console.WriteLine(base.inputs.Count + " is no valid input amount for an INPUT Node");
             }
         }
         public override Label accept(NodeVisitor nodeVisitor, String name)
