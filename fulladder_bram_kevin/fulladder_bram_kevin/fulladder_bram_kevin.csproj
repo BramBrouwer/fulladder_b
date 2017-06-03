@@ -87,7 +87,6 @@
     <Compile Include="Model\NOT.cs" />
     <Compile Include="Model\OR.cs" />
     <Compile Include="Model\Probe.cs" />
-    <Compile Include="Model\Unvalidated.cs" />
     <Compile Include="Model\Valid.cs" />
     <Compile Include="Model\XOR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

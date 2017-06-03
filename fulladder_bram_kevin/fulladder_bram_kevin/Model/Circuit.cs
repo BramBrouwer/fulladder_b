@@ -23,7 +23,7 @@ namespace fulladder_bram_kevin.Model
         public Circuit(Dictionary<string,Node> _nodes)
         {
             this._nodes = _nodes;
-            currentState = null;
+            currentState = new Invalid();
         }
 
         public void set_state(State s)
