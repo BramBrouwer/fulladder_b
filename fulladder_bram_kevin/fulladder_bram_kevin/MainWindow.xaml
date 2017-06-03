@@ -15,6 +15,7 @@
         <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="486" Margin="206,13,0,0" VerticalAlignment="Top" Width="666">
             <Grid ShowGridLines="True" Height="450" Width="599" Name="grid"/>
         </ScrollViewer>
+        <Button x:Name="button1" Content="Run circuit" HorizontalAlignment="Left" Margin="559,521,0,0" VerticalAlignment="Top" Width="130" Height="22" Click="button1_Click"/>
 
 
 

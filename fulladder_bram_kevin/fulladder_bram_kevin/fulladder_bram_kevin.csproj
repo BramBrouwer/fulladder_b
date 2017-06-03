@@ -69,7 +69,8 @@
     <Compile Include="Controller\NodeDrawer.cs" />
     <Compile Include="Controller\NodeFactory.cs" />
     <Compile Include="Controller\NodeVisitor.cs" />
-    <Compile Include="Controller\State.cs" />
+    <Compile Include="Model\Invalid.cs" />
+    <Compile Include="Model\State.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,6 +87,8 @@
     <Compile Include="Model\NOT.cs" />
     <Compile Include="Model\OR.cs" />
     <Compile Include="Model\Probe.cs" />
+    <Compile Include="Model\Unvalidated.cs" />
+    <Compile Include="Model\Valid.cs" />
     <Compile Include="Model\XOR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -43,7 +43,7 @@ namespace fulladder_bram_kevin.Controller
             Console.WriteLine("------------------------------------");
         }
 
-        public void CreateCircuit(Dictionary<string, string> edges)
+        public Dictionary<String,Node> CreateCircuit(Dictionary<string, string> edges)
         {
             Console.WriteLine("-----------------Create circuit-------------------");
             foreach (KeyValuePair<string, string> edge in edges)
@@ -65,7 +65,7 @@ namespace fulladder_bram_kevin.Controller
                 }
             }
             Console.WriteLine("------------------------------------");
-            Circuit.Instance._nodes = this._nodes;
+            return this._nodes;
         }
 
         public bool ValidateCircuit()
