@@ -10,6 +10,7 @@ namespace fulladder_bram_kevin.Model
 {
     public abstract class Node
     {
+        public bool inputIsHigh;
         public List<int> inputs = new List<int>();
         public int output;
         public List<Node> nexts = new List<Node>();

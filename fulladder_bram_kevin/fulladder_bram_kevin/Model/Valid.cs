@@ -19,6 +19,14 @@ namespace fulladder_bram_kevin.Model
             {
                 if (node.Value.GetType() == typeof(Input))
                 {
+                    if (node.Value.inputIsHigh)
+                    {
+                        node.Value.inputs.Add(1);
+                    }
+                    else
+                    {
+                        node.Value.inputs.Add(0);
+                    }
                     List<Node> currents = new List<Node>();
                     List<Node> nexts = new List<Node>();
                     currents.Add(node.Value);
@@ -55,10 +63,7 @@ namespace fulladder_bram_kevin.Model
             logBody.AppendText("-----------------------------------" + System.Environment.NewLine);
             foreach (KeyValuePair<string, Node> node in circuit._nodes)
             {
-                if (node.Value.GetType() != typeof(Input))
-                {
-                    node.Value.inputs.Clear();
-                }
+                node.Value.inputs.Clear();
                 node.Value.output = 2;
             }
 

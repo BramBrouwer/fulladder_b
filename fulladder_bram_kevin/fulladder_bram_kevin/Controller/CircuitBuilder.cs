@@ -57,8 +57,7 @@ namespace fulladder_bram_kevin.Controller
             foreach (KeyValuePair<string, Node> node in _nodes)
             {
                 if(node.Value.GetType() != typeof(Probe))
-                {
-                   
+                {                
                     if (node.Value.nexts.Count == 0)
                     {
                         logBody.AppendText("Circuit is invalid. Non-output node found without a next."+System.Environment.NewLine);
@@ -69,19 +68,20 @@ namespace fulladder_bram_kevin.Controller
 
             if(circuitIsValid)
             {
-                foreach (KeyValuePair<string, Node> node in _nodes)
-                {
-                    if (node.Value.GetType() == typeof(Input))
-                    {
-                        node.Value.inputs.Add(1);
-                    }
-                }
-
                 int counter = _nodes.Count * _nodes.Count;
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
                     if (node.Value.GetType() == typeof(Input))
                     {
+                        if (node.Value.inputIsHigh)
+                        {
+                            node.Value.inputs.Add(1);
+                        }
+                        else
+                        {
+                            node.Value.inputs.Add(0);
+                        }
+
                         List<Node> currents = new List<Node>();
                         List<Node> nexts = new List<Node>();
                         currents.Add(node.Value);
@@ -118,10 +118,7 @@ namespace fulladder_bram_kevin.Controller
                 }
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
-                    if (node.Value.GetType() != typeof(Input))
-                    {
-                        node.Value.inputs.Clear();
-                    }
+                    node.Value.inputs.Clear();
                     node.Value.output = 2;
                 }
             }
