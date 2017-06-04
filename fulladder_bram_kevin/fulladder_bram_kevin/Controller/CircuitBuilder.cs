@@ -47,7 +47,6 @@ namespace fulladder_bram_kevin.Controller
                     _nodes[key].nexts.Add(_nodes[next]);
                 }
             }
-            Console.WriteLine("------------------------------------");
             return this._nodes;
         }
 
@@ -70,19 +69,20 @@ namespace fulladder_bram_kevin.Controller
 
             if(circuitIsValid)
             {
-                foreach (KeyValuePair<string, Node> node in _nodes)
-                {
-                    if (node.Value.GetType() == typeof(Input))
-                    {
-                        node.Value.inputs.Add(1);
-                    }
-                }
-
                 int counter = _nodes.Count * _nodes.Count;
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
                     if (node.Value.GetType() == typeof(Input))
                     {
+                        if (node.Value.inputIsHigh)
+                        {
+                            node.Value.inputs.Add(1);
+                        }
+                        else
+                        {
+                            node.Value.inputs.Add(0);
+                        }
+
                         List<Node> currents = new List<Node>();
                         List<Node> nexts = new List<Node>();
                         currents.Add(node.Value);

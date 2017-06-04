@@ -24,8 +24,26 @@ namespace fulladder_bram_kevin.Controller
         public Node CreateNode(string type)
         {
             Type t = _types[type];
-            Node node = (Node)Activator.CreateInstance(t);
-            return node;
+            if(t.GetType() == typeof(Input))
+            {
+                if (type == "INPUT_HIGH")
+                {
+                    Object[] args = { "input", true };
+                    Node node = (Node)Activator.CreateInstance(t, args);
+                    return node;
+                }
+                else
+                {
+                    Object[] args = { "input", false };
+                    Node node = (Node)Activator.CreateInstance(t, args);
+                    return node;
+                }
+            }
+            else
+            {
+                Node node = (Node)Activator.CreateInstance(t);
+                return node;
+            }
         }
     }
 }
