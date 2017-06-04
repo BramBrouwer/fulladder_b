@@ -57,8 +57,7 @@ namespace fulladder_bram_kevin.Controller
             foreach (KeyValuePair<string, Node> node in _nodes)
             {
                 if(node.Value.GetType() != typeof(Probe))
-                {
-                   
+                {                
                     if (node.Value.nexts.Count == 0)
                     {
                         Console.WriteLine("No Next");
@@ -119,10 +118,7 @@ namespace fulladder_bram_kevin.Controller
                 }
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
-                    if (node.Value.GetType() != typeof(Input))
-                    {
-                        node.Value.inputs.Clear();
-                    }
+                    node.Value.inputs.Clear();
                     node.Value.output = 2;
                 }
             }

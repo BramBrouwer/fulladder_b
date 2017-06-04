@@ -12,7 +12,6 @@ namespace fulladder_bram_kevin.Model
     {
         public override void run(Circuit circuit, TextBox logBody)
         {
-
             //Run circuit 
             Console.WriteLine("---------------RUN--------------");
             foreach (KeyValuePair<string, Node> node in circuit._nodes)
