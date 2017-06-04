@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using fulladder_bram_kevin.Controller;
 using System.Windows.Controls;
 using fulladder_bram_kevin.Model;
+using System.Diagnostics;
 
 //TODO
 //Test checkforloops
@@ -25,6 +26,7 @@ namespace fulladder_bram_kevin
         public Dictionary<string, string> _edges = new Dictionary<string, string>();
         private TextBox logBody;
         private MainController mainController;
+        private String lastPath;
 
         public FileReader(MainController mainController, TextBox logBody)
         {
@@ -32,8 +34,10 @@ namespace fulladder_bram_kevin
             this.mainController = mainController;
         }
 
-        public Boolean chooseFile()
+        public Boolean chooseFile(bool curFile)
         {
+            if (curFile) { _filecontents = File.ReadAllText(lastPath); return readFile(); } //Reload current file
+
             // Create OpenFileDialog 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
@@ -50,6 +54,7 @@ namespace fulladder_bram_kevin
                 // Open document 
                 string filename = dlg.FileName;
                 _filecontents = File.ReadAllText(dlg.FileName);
+                lastPath = dlg.FileName;
                 return readFile();
             }
             else
@@ -130,6 +135,17 @@ namespace fulladder_bram_kevin
             logBody.AppendText(" - " + System.Environment.NewLine);
         }
 
+        public void edit()
+        {
+            if(lastPath == null)
+            {
+                mainController.openFile(false);
+            }
+            else
+            {
+                Process.Start(lastPath);
+            }
+        }
 
     }
 }

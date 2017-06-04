@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="888" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="button" Content="Open circuit" HorizontalAlignment="Left" Margin="404,521,0,0" VerticalAlignment="Top" Width="134" Height="22" Click="button_Click"/>
+        <Button x:Name="button" Content="Open circuit" HorizontalAlignment="Left" Margin="302,521,0,0" VerticalAlignment="Top" Width="134" Height="22" Click="button_Click"/>
         <Label x:Name="label" Content="Log" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold" FontSize="15pt" BorderBrush="Black" BorderThickness="1px" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="logBody" HorizontalAlignment="Left" Height="504" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" TextChanged="logBody_TextChanged" IsReadOnly="True" BorderBrush="Black" BorderThickness="1px" TextAlignment="Center" />
         <Canvas x:Name="mainCanvas" HorizontalAlignment="Left" Height="86" Margin="206,0,0,0" VerticalAlignment="Top" Width="141">
@@ -15,7 +15,9 @@
         <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Height="486" Margin="206,13,0,0" VerticalAlignment="Top" Width="666">
             <Grid ShowGridLines="True" Height="450" Width="599" Name="grid"/>
         </ScrollViewer>
-        <Button x:Name="button1" Content="Run circuit" HorizontalAlignment="Left" Margin="559,521,0,0" VerticalAlignment="Top" Width="130" Height="22" Click="button1_Click"/>
+        <Button x:Name="button1" Content="Run circuit" HorizontalAlignment="Left" Margin="461,521,0,0" VerticalAlignment="Top" Width="130" Height="22" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Edit circuit" HorizontalAlignment="Left" Margin="619,521,0,0" VerticalAlignment="Top" Width="136" Height="22" Click="button2_Click"/>
+        <Button x:Name="button3" Content="Reload circuit" HorizontalAlignment="Left" Margin="772,521,0,0" VerticalAlignment="Top" Width="100" Height="22" Click="button3_Click"/>
 
 
 

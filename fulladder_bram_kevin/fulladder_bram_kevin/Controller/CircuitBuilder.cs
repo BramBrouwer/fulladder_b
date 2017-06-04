@@ -38,6 +38,7 @@ namespace fulladder_bram_kevin.Controller
 
         public Dictionary<String,Node> CreateCircuit(Dictionary<string, string> edges)
         {
+
             foreach (KeyValuePair<string, string> edge in edges)
             {
                 string key = edge.Key;

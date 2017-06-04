@@ -30,7 +30,7 @@ namespace fulladder_bram_kevin
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            mainController.openFile();
+            mainController.openFile(false);
         }
 
         private void logBody_TextChanged(object sender, TextChangedEventArgs e)
@@ -44,6 +44,16 @@ namespace fulladder_bram_kevin
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             mainController.run();
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            mainController.edit();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            mainController.reload();
         }
     }
 }

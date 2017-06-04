@@ -44,7 +44,9 @@ namespace fulladder_bram_kevin.Controller
         public Object visit(Input input, string s)
         {
             Label label = getBaseLabel();
-            label.Content = s + " - " + "Input";
+            int val = 0;
+            if (input.inputIsHigh) { val = 1; };
+            label.Content = s + " - " + "Input("+val+")";
             return label;
         }
 
