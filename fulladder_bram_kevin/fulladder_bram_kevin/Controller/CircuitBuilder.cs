@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using fulladder_bram_kevin.Model;
+using System.Windows.Controls;
 
 namespace fulladder_bram_kevin.Controller
 {
@@ -11,11 +12,13 @@ namespace fulladder_bram_kevin.Controller
     {
         private Dictionary<string, Node> _nodes;
         private NodeFactory _factory;
+        private TextBox logBody;
 
-        public CircuitBuilder(NodeFactory nodeFactory)
+        public CircuitBuilder(NodeFactory nodeFactory,TextBox logBody)
         {
             _factory = nodeFactory;
             _nodes = new Dictionary<string, Node>();
+            this.logBody = logBody;
         }
 
         public Dictionary<string,Node> getNodes()
@@ -26,8 +29,6 @@ namespace fulladder_bram_kevin.Controller
         public void CreateAllNodes(Dictionary<string, string> nodesToBuild)
         {
             _nodes.Clear();
-
-            Console.WriteLine("-------------------Create all nodes----------------");
             foreach (KeyValuePair<string, string> nodeString in nodesToBuild)
             {
                 Node node = _factory.CreateNode(nodeString.Value);
@@ -37,7 +38,7 @@ namespace fulladder_bram_kevin.Controller
 
         public Dictionary<String,Node> CreateCircuit(Dictionary<string, string> edges)
         {
-            Console.WriteLine("-----------------Create circuit-------------------");
+
             foreach (KeyValuePair<string, string> edge in edges)
             {
                 string key = edge.Key;
@@ -52,7 +53,7 @@ namespace fulladder_bram_kevin.Controller
 
         public bool ValidateCircuit()
         {
-            Console.WriteLine("---------------Validate--------------");
+            logBody.AppendText("Validating circuit" + System.Environment.NewLine + "-" + System.Environment.NewLine);
             bool circuitIsValid = true;
             foreach (KeyValuePair<string, Node> node in _nodes)
             {
@@ -60,8 +61,8 @@ namespace fulladder_bram_kevin.Controller
                 {                
                     if (node.Value.nexts.Count == 0)
                     {
-                        Console.WriteLine("No Next");
-                        circuitIsValid = false;
+                        logBody.AppendText("Circuit is invalid. Non-output node found without a next."+System.Environment.NewLine);
+                        return false;
                     }
                 }
             }
@@ -109,9 +110,9 @@ namespace fulladder_bram_kevin.Controller
                             }
                             else
                             {
-                                Console.WriteLine("Infinite Loop");
-                                circuitIsValid = false;
+                                logBody.AppendText("Circuit is invalid, infinite loop found." + System.Environment.NewLine);
                                 currents.Clear();
+                                return false;
                             }
                         }
                     }
@@ -122,7 +123,7 @@ namespace fulladder_bram_kevin.Controller
                     node.Value.output = 2;
                 }
             }
-            Console.WriteLine("---------------------------------");
+            logBody.AppendText("Circuit is valid." + System.Environment.NewLine);
             return circuitIsValid;
         }
     }
