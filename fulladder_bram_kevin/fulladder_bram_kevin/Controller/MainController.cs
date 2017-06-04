@@ -31,16 +31,13 @@ namespace fulladder_bram_kevin.Controller
             this.nodeFactory.AddNodeType("NOT", typeof(NOT));
             this.nodeFactory.AddNodeType("OR", typeof(OR));
             this.nodeFactory.AddNodeType("XOR", typeof(XOR));
-            this.circuitbuilder = new CircuitBuilder(nodeFactory);
+            this.circuitbuilder = new CircuitBuilder(nodeFactory,mainWindow.logBody);
         }
 
-           //TODO 
-           //Circuit geen singleton maar gewoon instance retunen hier na het creeeren
-           //Bij het creeren wordt de state op unvalidated gezet.
-           //Na het valideren van het circuit wordt de state op validat/invalid gezet
-        public void openFile()
+           
+        public void openFile(bool curFile)
         {
-            if (filereader.chooseFile())
+            if (filereader.chooseFile(curFile))
             {
                 circuitbuilder.CreateAllNodes(filereader._nodes);
                 circuit = new Circuit(circuitbuilder.CreateCircuit(filereader._edges));
@@ -55,12 +52,27 @@ namespace fulladder_bram_kevin.Controller
                     circuit.set_state(new Invalid());
                 }
             }
+            else
+            {
+                Console.WriteLine("mMeme");
+            }
         }
         //Called when the user clicks the run button, behaviour depends on the circuits state
         public void run()
         {
             if(circuit == null) { mainWindow.logBody.AppendText("No circuit found!"); return; }
             circuit.run(mainWindow.logBody);
+        }
+
+
+        public void edit()
+        {
+            filereader.edit();
+        }
+
+        public void reload()
+        {
+            openFile(true);
         }
 
 

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace fulladder_bram_kevin.Model
+    
 {
     class Valid : State
     {
         public override void run(Circuit circuit, TextBox logBody)
         {
             //Run circuit 
-            Console.WriteLine("---------------RUN--------------");
+            logBody.AppendText("Running Circuit"+System.Environment.NewLine);
             foreach (KeyValuePair<string, Node> node in circuit._nodes)
             {
                 if (node.Value.GetType() == typeof(Input))
@@ -50,15 +51,16 @@ namespace fulladder_bram_kevin.Model
                     }
                 }
             }
-            Console.WriteLine("---------------OUTPUT--------------");
+            logBody.AppendText("------------OUTPUT--------------"+System.Environment.NewLine);
             foreach (KeyValuePair<string, Node> node in circuit._nodes)
             {
+
                 if (node.Value.GetType() == typeof(Probe))
                 {
-                    Console.WriteLine("Probe: " + node.Key + " output: " + node.Value.output);
+                    logBody.AppendText("Probe: " + node.Key + " output: " + node.Value.output + System.Environment.NewLine);
                 }
             }
-            Console.WriteLine("-----------------------------------");
+            logBody.AppendText("-----------------------------------" + System.Environment.NewLine);
             foreach (KeyValuePair<string, Node> node in circuit._nodes)
             {
                 node.Value.inputs.Clear();
