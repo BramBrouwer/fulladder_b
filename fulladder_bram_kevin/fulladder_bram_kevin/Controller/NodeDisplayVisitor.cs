@@ -18,7 +18,10 @@ namespace fulladder_bram_kevin.Controller
     */
     class NodeDisplayVisitor : NodeVisitor
     {
-        public Object visit(NOR nor, string s)
+        /*
+            Base label reference so general label properties can be easily changed
+        */
+        public Label getBaseLabel()
         {
             Brush b = Brushes.Black;
             Label label = new Label();
@@ -26,99 +29,64 @@ namespace fulladder_bram_kevin.Controller
             label.Width = 100;
             label.BorderBrush = b;
             label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "NOR";
             label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            label.VerticalContentAlignment = VerticalAlignment.Center;
+            return label;
+        }
+
+        public Object visit(NOR nor, string s)
+        {
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "NOR";     
             return label;
         }
 
         public Object visit(Input input, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "Input";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "Input";
             return label;
         }
 
         public Object visit(Probe probe, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "Probe";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "Probe";
             return label;
         }
 
         public Object visit(XOR xor, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "XOR";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "XOR";
             return label;
         }
 
         public Object visit(OR or, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "OR";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "OR";
             return label;
         }
 
         public Object visit(NOT not, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "NOT";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "NOT";
             return label;
         }
 
         public Object visit(NAND nand, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "NAND";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "NAND";
             return label;
         }
 
         public Object visit(AND and, string s)
         {
-            Brush b = Brushes.Black;
-            Label label = new Label();
-            label.Height = 50;
-            label.Width = 100;
-            label.BorderBrush = b;
-            label.BorderThickness = new System.Windows.Thickness(1);
-            label.Content = s + System.Environment.NewLine + "AND";
-            label.HorizontalContentAlignment = HorizontalAlignment.Center;
+            Label label = getBaseLabel();
+            label.Content = s + " - " + "AND";
             return label;
         }
     }
