@@ -13,6 +13,7 @@
       <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAABAAAgAHAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="fulladder_bram_kevin.Controller.CircuitBuilder">
     <Position X="11" Y="4.25" Width="1.5" />
@@ -34,12 +35,12 @@
       <FileName>Controller\MainController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="nodeDrawer" />
-      <Field Name="nodeFactory" />
-      <Field Name="circuit" />
       <Field Name="circuitbuilder" />
+      <Field Name="nodeDrawer" />
       <Field Name="filereader" />
+      <Field Name="nodeFactory" />
       <Field Name="mainWindow" />
+      <Field Name="circuit" />
     </ShowAsAssociation>
   </Class>
   <Class Name="fulladder_bram_kevin.Controller.NodeDisplayVisitor" BaseTypeListCollapsed="true">

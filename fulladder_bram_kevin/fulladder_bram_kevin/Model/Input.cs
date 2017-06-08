@@ -11,9 +11,8 @@ namespace fulladder_bram_kevin.Model
     public class Input : Node
     {
         
-        public Input(bool input)
+        public Input()
         {
-            base.inputIsHigh = input;
             base.output = 2;
         }
 

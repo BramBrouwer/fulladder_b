@@ -22,8 +22,8 @@ namespace fulladder_bram_kevin.Controller
             this.nodeDrawer = new NodeDrawer(mainWindow.grid);
             this.filereader = new FileReader(this,mainWindow.logBody);
             this.nodeFactory = new NodeFactory();
-            this.nodeFactory.AddNodeType("INPUT_HIGH", typeof(Input));
-            this.nodeFactory.AddNodeType("INPUT_LOW", typeof(Input));
+            this.nodeFactory.AddNodeType("INPUT_HIGH", typeof(InputHigh));
+            this.nodeFactory.AddNodeType("INPUT_LOW", typeof(InputLow));
             this.nodeFactory.AddNodeType("PROBE", typeof(Probe));
             this.nodeFactory.AddNodeType("AND", typeof(AND));
             this.nodeFactory.AddNodeType("NAND", typeof(NAND));
