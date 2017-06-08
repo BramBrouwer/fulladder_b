@@ -55,7 +55,10 @@ namespace fulladder_bram_kevin.Model
             logBody.AppendText("-----------------------------------" + System.Environment.NewLine);
             foreach (KeyValuePair<string, Node> node in circuit._nodes)
             {
-                node.Value.inputs.Clear();
+                if (node.Value.GetType() != typeof(Input))
+                {
+                    node.Value.inputs.Clear();
+                }
                 node.Value.output = 2;
             }
 

@@ -110,7 +110,11 @@ namespace fulladder_bram_kevin.Controller
                 }
                 foreach (KeyValuePair<string, Node> node in _nodes)
                 {
-                    node.Value.inputs.Clear();
+                    if (node.Value.GetType() != typeof(Input))
+                    {
+                        node.Value.inputs.Clear();
+                    }
+                        
                     node.Value.output = 2;
                 }
             }
