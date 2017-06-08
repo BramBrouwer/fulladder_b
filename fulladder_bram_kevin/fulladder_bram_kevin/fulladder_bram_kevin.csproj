@@ -69,6 +69,8 @@
     <Compile Include="Controller\NodeDrawer.cs" />
     <Compile Include="Controller\NodeFactory.cs" />
     <Compile Include="Controller\NodeVisitor.cs" />
+    <Compile Include="Model\InputHigh.cs" />
+    <Compile Include="Model\InputLow.cs" />
     <Compile Include="Model\Invalid.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="FileReader.cs" />
